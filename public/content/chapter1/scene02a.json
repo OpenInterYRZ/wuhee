@@ -1,0 +1,108 @@
+{
+  "scene": {
+    "id": "scene02a",
+    "title": "真相的引导者",
+    "background": "/assets/backgrounds/quiet_alley.jpg",
+    "music": "/assets/audio/bgm/mysterious_tension.mp3"
+  },
+  "script": [
+    {
+      "type": "background",
+      "asset": "/assets/backgrounds/quiet_alley.jpg",
+      "transition": "fade"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "很好，跟我来。但首先，你需要明白一件事。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "什么事？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "一旦你知道了真相，就再也回不到从前的无知状态了。你确定要继续吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "我已经感受到了那种不安，与其继续困惑下去，不如面对真相。"
+    },
+    {
+      "type": "character_show",
+      "character": "dr_chen",
+      "position": "right",
+      "transition": "slide_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "dr_chen",
+      "text": "（从阴影中走出）又一个觉醒者。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "还有其他人？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "dr_chen",
+      "text": "我是陈博士，专门研究群体心理学。我们一直在寻找像你这样能够独立思考的人。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "勒庞在《乌合之众》中描述的现象，在现代社会中变得更加复杂和隐蔽。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "dr_chen",
+      "text": "社交媒体、算法推荐、信息茧房...这些都是新时代的群体操控工具。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "你们的意思是，我们都被某种系统性的力量在操控着？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "dr_chen",
+      "text": "不仅仅是操控，而是一种更深层的心理同化。人们失去了独立判断的能力。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "但你不同。你能看到这种操控的存在，这就是我们需要你的原因。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "你们想让我做什么？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "dr_chen",
+      "text": "帮助我们唤醒更多的人。但首先，你需要更深入地了解这个系统是如何运作的。"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "我想了解这个系统的运作机制",
+          "next_scene": "scene03a"
+        },
+        {
+          "text": "我想知道如何唤醒其他人",
+          "next_scene": "scene03b"
+        },
+        {
+          "text": "这听起来像是阴谋论",
+          "next_scene": "scene03c"
+        }
+      ]
+    }
+  ]
+}

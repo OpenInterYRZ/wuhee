@@ -1,0 +1,140 @@
+{
+  "scene": {
+    "id": "scene02b",
+    "title": "逃避的代价",
+    "background": "/assets/backgrounds/city_square.jpg",
+    "music": "/assets/audio/bgm/melancholy_theme.mp3"
+  },
+  "script": [
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "不，我觉得这太危险了。我还是继续过我的普通生活吧。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "（叹息）我理解你的恐惧。但是，逃避并不能让问题消失。"
+    },
+    {
+      "type": "character_hide",
+      "character": "mysterious_figure",
+      "transition": "fade_out"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "神秘人消失在人群中，仿佛从未出现过。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（自言自语）也许这样更好...继续过普通的生活。"
+    },
+    {
+      "type": "sound_effect",
+      "asset": "/assets/audio/sfx/phone_notification.mp3",
+      "volume": 0.5
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（看手机）又是推荐算法给我推送的新闻...这些内容怎么都这么相似？"
+    },
+    {
+      "type": "character_show",
+      "character": "crowd_member_1",
+      "position": "left",
+      "transition": "slide_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "crowd_member_1",
+      "text": "你也在看这个新闻吗？真是太可怕了！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "是啊...（心中疑惑）等等，为什么大家看到的都是同样的内容？"
+    },
+    {
+      "type": "character_show",
+      "character": "crowd_member_2",
+      "position": "right",
+      "transition": "slide_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "crowd_member_2",
+      "text": "我们必须要做点什么！不能让这种事情继续下去！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（内心独白）这种愤怒...这种一致的反应...就像那个神秘人说的一样。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "主角开始意识到，即使选择了逃避，那股无形的力量依然在影响着周围的一切。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（后悔地）也许...我应该听听那个人要说什么。"
+    },
+    {
+      "type": "character_show",
+      "character": "elderly_man",
+      "position": "center",
+      "transition": "fade_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "elderly_man",
+      "text": "年轻人，你看起来很困惑。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "老先生，您有没有觉得...现在的人们都变得很相似？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "elderly_man",
+      "text": "哈哈，这你才发现吗？我活了这么久，见过太多这样的时代了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "elderly_man",
+      "text": "每当社会出现重大变化时，人们就会不自觉地聚集在一起，形成群体意识。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "那...有什么办法可以保持独立思考吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "elderly_man",
+      "text": "当然有。但首先，你要有勇气面对真相，而不是逃避。"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "我想重新找到那个神秘人",
+          "next_scene": "scene02a"
+        },
+        {
+          "text": "请您告诉我如何保持独立思考",
+          "next_scene": "scene04a"
+        },
+        {
+          "text": "我还是觉得这些都太复杂了",
+          "next_scene": "scene04b"
+        }
+      ]
+    }
+  ]
+}

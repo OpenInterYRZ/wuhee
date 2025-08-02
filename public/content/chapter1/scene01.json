@@ -1,0 +1,146 @@
+{
+  "scene": {
+    "id": "chapter1_scene01",
+    "title": "序章 - 人群中的觉醒",
+    "background": "/assets/backgrounds/city_square.jpg",
+    "music": "/assets/audio/bgm/mysterious_atmosphere.mp3"
+  },
+  "script": [
+    {
+      "type": "background",
+      "asset": "/assets/backgrounds/city_square.jpg",
+      "transition": "fade"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "这是一个普通的午后，阳光透过云层洒在繁忙的城市广场上。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "人群如潮水般涌动，每个人都有着自己的目的地，自己的故事。"
+    },
+    {
+      "type": "character_show",
+      "character": "protagonist",
+      "position": "center",
+      "transition": "fade_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（站在人群中，感受着周围的喧嚣）又是这样的一天..."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "每个人都在匆忙地走着，但真的知道自己要去哪里吗？"
+    },
+    {
+      "type": "sound_effect",
+      "asset": "/assets/audio/sfx/crowd_murmur.mp3",
+      "volume": 0.3
+    },
+    {
+      "type": "character_show",
+      "character": "crowd_member_1",
+      "position": "left",
+      "transition": "slide_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "crowd_member_1",
+      "text": "快点快点！要迟到了！"
+    },
+    {
+      "type": "character_hide",
+      "character": "crowd_member_1",
+      "transition": "slide_out"
+    },
+    {
+      "type": "character_show",
+      "character": "crowd_member_2",
+      "position": "right",
+      "transition": "slide_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "crowd_member_2",
+      "text": "今天的会议又要拖到很晚..."
+    },
+    {
+      "type": "character_hide",
+      "character": "crowd_member_2",
+      "transition": "slide_out"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（看着来来往往的人群）每个人都被某种看不见的力量推动着..."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "就像...就像《乌合之众》书中描述的那样。"
+    },
+    {
+      "type": "character_show",
+      "character": "mysterious_figure",
+      "position": "left",
+      "transition": "fade_in"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "有趣的观察。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "（转头看向声音的来源）你是...？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "一个和你有着相似想法的人。你刚才提到的那本书，很少有人会在这种场合想起它。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "勒庞的《乌合之众》吗？确实，在这个时代，很少有人会去思考群体心理学了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "但你不同。你能看到别人看不到的东西，感受到别人感受不到的暗流。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "protagonist",
+      "text": "我只是...觉得有些不对劲。这些人，包括我自己，都像是被什么东西控制着。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "mysterious_figure",
+      "text": "那么，你想要了解真相吗？想要知道这股力量究竟是什么吗？"
+    },
+    {
+      "type": "choice",
+      "options": [
+        {
+          "text": "我想知道真相",
+          "next_scene": "scene02a"
+        },
+        {
+          "text": "这太危险了，我还是算了",
+          "next_scene": "scene02b"
+        },
+        {
+          "text": "你到底是什么人？",
+          "next_scene": "scene02c"
+        }
+      ]
+    }
+  ]
+}

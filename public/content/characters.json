@@ -1,0 +1,64 @@
+{
+  "characters": {
+    "narrator": {
+      "name": "旁白",
+      "color": "#ffffff",
+      "avatar": null
+    },
+    "protagonist": {
+      "name": "主角",
+      "color": "#4a90e2",
+      "avatar": "/assets/characters/protagonist.png"
+    },
+    "mysterious_figure": {
+      "name": "神秘人",
+      "color": "#8b5a3c",
+      "avatar": "/assets/characters/mysterious_figure.png"
+    },
+    "crowd_member_1": {
+      "name": "路人甲",
+      "color": "#666666",
+      "avatar": "/assets/characters/crowd_member_1.png"
+    },
+    "crowd_member_2": {
+      "name": "路人乙",
+      "color": "#666666",
+      "avatar": "/assets/characters/crowd_member_2.png"
+    },
+    "dr_chen": {
+      "name": "陈博士",
+      "color": "#2e8b57",
+      "avatar": "/assets/characters/dr_chen.png"
+    },
+    "activist": {
+      "name": "激进分子",
+      "color": "#dc143c",
+      "avatar": "/assets/characters/activist.png"
+    },
+    "media_reporter": {
+      "name": "记者",
+      "color": "#ff8c00",
+      "avatar": "/assets/characters/media_reporter.png"
+    },
+    "corporate_executive": {
+      "name": "企业高管",
+      "color": "#4b0082",
+      "avatar": "/assets/characters/corporate_executive.png"
+    },
+    "student_leader": {
+      "name": "学生领袖",
+      "color": "#ff69b4",
+      "avatar": "/assets/characters/student_leader.png"
+    },
+    "elderly_man": {
+      "name": "老者",
+      "color": "#8fbc8f",
+      "avatar": "/assets/characters/elderly_man.png"
+    },
+    "security_guard": {
+      "name": "保安",
+      "color": "#696969",
+      "avatar": "/assets/characters/security_guard.png"
+    }
+  }
+}
