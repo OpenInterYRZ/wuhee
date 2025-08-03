@@ -2,24 +2,27 @@
   "scene": {
     "id": "chapter1_scene01",
     "title": "序章 - 人群中的觉醒",
-    "background": "/assets/backgrounds/city_square.jpg",
+    "background": "/images/city_square.jpg",
     "music": "/assets/audio/bgm/mysterious_atmosphere.mp3"
   },
   "script": [
     {
       "type": "background",
-      "asset": "/assets/backgrounds/city_square.jpg",
+      "asset": "/images/city_square.jpg",
       "transition": "fade"
     },
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "这是一个普通的午后，阳光透过云层洒在繁忙的城市广场上。"
+      "text": "这是一个普通的午后，阳光透过云层洒在繁忙的城市广场上。",
+      "backgroundChange": "/images/5f7d4c217451909e8fe0c6c840ef8436.png",
+      "background": "/images/city_square.jpg"
     },
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "人群如潮水般涌动，每个人都有着自己的目的地，自己的故事。"
+      "text": "人群如潮水般涌动，每个人都有着自己的目的地，自己的故事。",
+      "background": "/images/city_square.jpg"
     },
     {
       "type": "character_show",
@@ -35,6 +38,7 @@
     {
       "type": "dialogue",
       "speaker": "protagonist",
+      "backgroundChange": "/images/fb1d8a903f0460143da2ea2b877eacc.jpg",
       "text": "每个人都在匆忙地走着，但真的知道自己要去哪里吗？"
     },
     {

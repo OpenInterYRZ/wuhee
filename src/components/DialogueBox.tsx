@@ -5,7 +5,7 @@ const DialogueBox: React.FC = () => {
   const { currentDialogue, currentSpeaker, isPlaying } = useGameStore()
   const [displayedText, setDisplayedText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [typingSpeed, setTypingSpeed] = useState(50)
+  const [typingSpeed] = useState(50)
 
   // 打字机效果
   useEffect(() => {
@@ -53,6 +53,12 @@ const DialogueBox: React.FC = () => {
 
   const characterInfo = getCharacterInfo(currentSpeaker)
 
+  // 处理对话框点击事件
+  const handleDialogueClick = (e: React.MouseEvent) => {
+    e.stopPropagation() // 阻止事件冒泡到 GameView
+    // 背景现在会在对话显示时立即切换，不需要点击处理
+  }
+
   // 获取头像路径
   const getAvatarPath = (speakerId: string) => {
     // 根据角色ID映射到实际的头像文件
@@ -67,7 +73,7 @@ const DialogueBox: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 w-full h-48 z-40 flex items-stretch p-0 mb-20">
+    <div className="fixed bottom-0 left-0 w-full h-48 z-40 flex items-stretch p-0 mb-20" onClick={handleDialogueClick}>
       {/* 对话框背景 */}
       <div className="absolute inset-0 bg-none" />
 

@@ -3,7 +3,7 @@ import { useGameStore } from '../store/gameStore'
 
 const Stage: React.FC = () => {
   const { background, characters } = useGameStore()
-
+  console.log('🖼️ Stage: 当前背景路径:', background)
   return (
     <div className="w-full h-full relative overflow-hidden">
       {/* 背景图片 */}
@@ -15,6 +15,7 @@ const Stage: React.FC = () => {
             className="w-full h-full object-cover"
             onError={(e) => {
               // 如果图片加载失败，显示默认背景
+              console.error('🖼️ Stage: 背景图片加载失败:', background)
               e.currentTarget.style.display = 'none'
             }}
           />

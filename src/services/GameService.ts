@@ -1,83 +1,84 @@
-import type { GameState } from '../types';
+import type { GameState } from '../types'
 
 export interface SceneData {
-  id: string;
-  title: string;
-  background?: string;
-  music?: string;
-  events: GameEvent[];
+  id: string
+  title: string
+  background?: string
+  music?: string
+  events: GameEvent[]
 }
 
 export interface GameEvent {
-  type: 'dialogue' | 'choice' | 'showCharacter' | 'hideCharacter' | 'changeBackground' | 'playMusic' | 'playSfx' | 'end';
-  speaker?: string;
-  text?: string;
-  character?: string;
-  position?: 'left' | 'center' | 'right';
-  background?: string;
-  music?: string;
-  sfx?: string;
-  choices?: Choice[];
-  nextScene?: string;
+  type: 'dialogue' | 'choice' | 'showCharacter' | 'hideCharacter' | 'changeBackground' | 'playMusic' | 'playSfx' | 'end'
+  speaker?: string
+  text?: string
+  character?: string
+  position?: 'left' | 'center' | 'right'
+  background?: string
+  backgroundChange?: string // 对话事件中的背景切换
+  music?: string
+  sfx?: string
+  choices?: Choice[]
+  nextScene?: string
 }
 
 export interface Choice {
-  id: string;
-  text: string;
-  nextScene?: string;
-  condition?: string;
+  id: string
+  text: string
+  nextScene?: string
+  condition?: string
 }
 
 export interface CharacterData {
-  id: string;
-  name: string;
-  color: string;
-  avatar?: string;
+  id: string
+  name: string
+  color: string
+  avatar?: string
 }
 
 class GameService {
-  private static instance: GameService;
-  private charactersData: Record<string, CharacterData> = {};
-  private currentScene: SceneData | null = null;
-  private currentEventIndex: number = 0;
+  private static instance: GameService
+  private charactersData: Record<string, CharacterData> = {}
+  private currentScene: SceneData | null = null
+  private currentEventIndex: number = 0
 
   private constructor() {
-    this.loadCharactersData();
+    this.loadCharactersData()
   }
 
   public static getInstance(): GameService {
     if (!GameService.instance) {
-      GameService.instance = new GameService();
+      GameService.instance = new GameService()
     }
-    return GameService.instance;
+    return GameService.instance
   }
 
   // 加载角色数据
   private async loadCharactersData(): Promise<void> {
     try {
-      const response = await fetch('/content/characters.json');
-      const data = await response.json();
+      const response = await fetch('/content/characters.json')
+      const data = await response.json()
       // 处理 {characters: {...}} 格式的数据
       if (data.characters) {
         this.charactersData = Object.keys(data.characters).reduce((acc: Record<string, CharacterData>, charId: string) => {
-          const char = data.characters[charId];
+          const char = data.characters[charId]
           acc[charId] = {
             id: charId,
             name: char.name,
             color: char.color,
-            avatar: char.avatar
-          };
-          return acc;
-        }, {});
+            avatar: char.avatar,
+          }
+          return acc
+        }, {})
       } else {
         // 处理数组格式的数据（向后兼容）
         this.charactersData = data.reduce((acc: Record<string, CharacterData>, char: CharacterData) => {
-          acc[char.id] = char;
-          return acc;
-        }, {});
+          acc[char.id] = char
+          return acc
+        }, {})
       }
     } catch (error) {
-      console.error('Failed to load characters data:', error);
+      console.error('Failed to load characters data:', error)
     }
   }
 
@@ -85,20 +86,21 @@ class GameService {
   public async loadScene(sceneId: string): Promise<SceneData | null> {
     try {
       // 处理场景ID格式：如果包含下划线则分割，否则直接使用
-      let scenePath: string;
+      let scenePath: string
       if (sceneId.includes('_')) {
-        const [chapter, scene] = sceneId.split('_');
-        scenePath = `/content/${chapter}/${scene}.json`;
+        const [chapter, scene] = sceneId.split('_')
+        scenePath = `/content/${chapter}/${scene}.json`
       } else {
         // 默认为第一章
-        scenePath = `/content/chapter1/${sceneId}.json`;
+        scenePath = `/content/chapter1/${sceneId}.json`
       }
-      
-      const response = await fetch(scenePath);
-      const rawData = await response.json();
-      
+
+      const response = await fetch(scenePath)
+      const rawData = await response.json()
+
       // 转换新格式的场景数据
-      let sceneData: SceneData;
+      let sceneData: SceneData
+      console.log('🖼️ GameService: rawData', rawData)
       if (rawData.scene && rawData.script) {
         // 新格式：{scene: {...}, script: [...]}
         sceneData = {
@@ -106,19 +108,19 @@ class GameService {
           title: rawData.scene.title,
           background: rawData.scene.background,
           music: rawData.scene.music,
-          events: this.convertScriptToEvents(rawData.script)
-        };
+          events: this.convertScriptToEvents(rawData.script),
+        }
       } else {
         // 旧格式：直接使用
-        sceneData = rawData;
+        sceneData = rawData
       }
-      
-      this.currentScene = sceneData;
-      this.currentEventIndex = 0;
-      return sceneData;
+
+      this.currentScene = sceneData
+      this.currentEventIndex = 0
+      return sceneData
     } catch (error) {
-      console.error(`Failed to load scene ${sceneId}:`, error);
-      return null;
+      console.error(`Failed to load scene ${sceneId}:`, error)
+      return null
     }
   }
 
@@ -130,129 +132,131 @@ class GameService {
           return {
             type: 'dialogue' as const,
             speaker: item.speaker,
-            text: item.text
-          };
+            text: item.text,
+            backgroundChange: item.backgroundChange || item.background, // 支持 backgroundChange 和 background 字段
+          }
         case 'choice':
           return {
             type: 'choice' as const,
-            choices: item.options?.map((option: any, index: number) => ({
-              id: `choice_${index}`,
-              text: option.text,
-              nextScene: option.next_scene
-            })) || []
-          };
+            choices:
+              item.options?.map((option: any, index: number) => ({
+                id: `choice_${index}`,
+                text: option.text,
+                nextScene: option.next_scene,
+              })) || [],
+          }
         case 'character_show':
           return {
             type: 'showCharacter' as const,
             character: item.character,
-            position: item.position
-          };
+            position: item.position,
+          }
         case 'character_hide':
           return {
             type: 'hideCharacter' as const,
-            character: item.character
-          };
+            character: item.character,
+          }
         case 'background':
           return {
             type: 'changeBackground' as const,
-            background: item.asset
-          };
+            background: item.asset,
+          }
         case 'sound_effect':
           return {
             type: 'playSfx' as const,
-            sfx: item.asset
-          };
+            sfx: item.asset,
+          }
         default:
           // 对于不识别的类型，转换为对话事件
           return {
             type: 'dialogue' as const,
             speaker: 'narrator',
-            text: item.text || ''
-          };
+            text: item.text || '',
+          }
       }
-    });
+    })
   }
 
   // 获取当前事件
   public getCurrentEvent(): GameEvent | null {
     if (!this.currentScene || this.currentEventIndex >= this.currentScene.events.length) {
-      return null;
+      return null
     }
-    return this.currentScene.events[this.currentEventIndex];
+    return this.currentScene.events[this.currentEventIndex]
   }
 
   // 推进到下一个事件
   public nextEvent(): GameEvent | null {
-    if (!this.currentScene) return null;
-    
-    this.currentEventIndex++;
-    return this.getCurrentEvent();
+    if (!this.currentScene) return null
+
+    this.currentEventIndex++
+    return this.getCurrentEvent()
   }
 
   // 处理选择
   public handleChoice(choiceId: string): string | null {
-    const currentEvent = this.getCurrentEvent();
+    const currentEvent = this.getCurrentEvent()
     if (!currentEvent || currentEvent.type !== 'choice') {
-      return null;
+      return null
     }
 
-    const choice = currentEvent.choices?.find(c => c.id === choiceId);
+    const choice = currentEvent.choices?.find((c) => c.id === choiceId)
     if (!choice) {
-      return null;
+      return null
     }
 
     // 如果选择有下一个场景，返回场景ID
     if (choice.nextScene) {
-      return choice.nextScene;
+      return choice.nextScene
     }
 
     // 否则继续当前场景的下一个事件
-    this.nextEvent();
-    return null;
+    this.nextEvent()
+    return null
   }
 
   // 获取角色信息
   public getCharacterInfo(characterId: string): CharacterData | null {
-    return this.charactersData[characterId] || null;
+    return this.charactersData[characterId] || null
   }
 
   // 重置游戏状态
   public reset(): void {
-    this.currentScene = null;
-    this.currentEventIndex = 0;
+    this.currentScene = null
+    this.currentEventIndex = 0
   }
 
   // 获取当前场景进度
   public getSceneProgress(): { current: number; total: number } {
     if (!this.currentScene) {
-      return { current: 0, total: 0 };
+      return { current: 0, total: 0 }
     }
     return {
       current: this.currentEventIndex,
-      total: this.currentScene.events.length
-    };
+      total: this.currentScene.events.length,
+    }
   }
 
   // 跳转到指定事件
   public jumpToEvent(eventIndex: number): GameEvent | null {
     if (!this.currentScene || eventIndex < 0 || eventIndex >= this.currentScene.events.length) {
-      return null;
+      return null
     }
-    this.currentEventIndex = eventIndex;
-    return this.getCurrentEvent();
+    this.currentEventIndex = eventIndex
+    return this.getCurrentEvent()
   }
 
   // 获取当前场景信息
   public getCurrentScene(): SceneData | null {
-    return this.currentScene;
+    return this.currentScene
   }
 
   // 检查是否到达场景结尾
   public isSceneEnd(): boolean {
-    if (!this.currentScene) return true;
-    return this.currentEventIndex >= this.currentScene.events.length;
+    if (!this.currentScene) return true
+    return this.currentEventIndex >= this.currentScene.events.length
   }
 }
 
-export const gameService = GameService.getInstance();
-export default GameService;
+export const gameService = GameService.getInstance()
+export default GameService

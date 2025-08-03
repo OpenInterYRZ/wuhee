@@ -55,6 +55,7 @@ const GameView: React.FC = () => {
   // 点击事件处理
   const handleClick = () => {
     if (!isPlaying || isPaused || currentChoices.length > 0) return
+
     handleNextEvent()
     setShowClickHint(false)
   }
