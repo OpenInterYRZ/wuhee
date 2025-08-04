@@ -85,7 +85,7 @@
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "（秦小南眼神动摇，身躯颤抖，唇齿间挤出沙哑的声音）"
+      "text": "秦小南眼神动摇，身躯颤抖，唇齿间挤出沙哑的声音"
     },
     {
       "type": "dialogue",
@@ -95,17 +95,17 @@
     {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『他在考验你，折磨你。你只是道具。』"
+      "text": "『他在考验你，折磨你。你只是个工具人。』"
     },
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "（一瞬的沉寂后，秦小南怒吼着掀翻桌案，火光狂舞）"
+      "text": "一瞬的沉寂后，秦小南怒吼着站起，眼神里满是怒火"
     },
     {
       "type": "dialogue",
       "speaker": "qxn",
-      "text": "我要杀了他！我要把他从他那该死的神像里拉出来！"
+      "text": "我要杀了他！我要把他和他的那些跟班都杀掉！"
     },
     {
       "type": "dialogue",
@@ -120,12 +120,32 @@
     {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『我是异端，他救了我……也毁了所有人。』"
+      "text": "『我曾经是异端，他救了我……也毁了所有人。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "少女小时候被选中成为弥陀的代言人，代价是天生不能说话。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "少女只能在本子上写字与弥陀交流。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "弥陀想要了解人间，少女想要了解弥陀。"
     },
     {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『他问弥陀，我还能活多久。弥陀说，五分钟都没有。』"
+      "text": "『他问弥陀，我的寿命能超过5分钟吗？弥陀说，否。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『弥陀说，否。』"
     },
     {
       "type": "dialogue",
