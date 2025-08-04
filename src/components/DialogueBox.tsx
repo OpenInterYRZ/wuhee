@@ -43,10 +43,8 @@ const DialogueBox: React.FC = () => {
     // 这里可以从角色配置文件中获取角色信息
     const characterMap: Record<string, { name: string; color: string }> = {
       narrator: { name: '旁白', color: '#ffffff' },
-      protagonist: { name: '主角', color: '#4a90e2' },
-      mysterious_figure: { name: '神秘人', color: '#8b5a3c' },
-      crowd_member_1: { name: '路人甲', color: '#666666' },
-      crowd_member_2: { name: '路人乙', color: '#666666' },
+      qxn: { name: '秦小南', color: '#4a90e2' },
+      ybsn: { name: '哑巴少女', color: '#8b5a3c' },
     }
 
     return characterMap[speakerId] || { name: speakerId, color: '#ffffff' }
@@ -64,13 +62,11 @@ const DialogueBox: React.FC = () => {
   const getAvatarPath = (speakerId: string) => {
     // 根据角色ID映射到实际的头像文件
     const avatarMap: Record<string, string> = {
-      protagonist: '/avatar/Runze Yang-XJ109340.png',
-      mysterious_figure: '/avatar/d429e46eb951964bae7b28c4e7a9906.jpg',
-      crowd_member_1: '/avatar/Runze Yang-XJ109340.png',
-      crowd_member_2: '/avatar/d429e46eb951964bae7b28c4e7a9906.jpg',
+      qxn: '/avatar/qxn.png',
+      ybsn: '/avatar/4cd.png',
     }
 
-    const avatarPath = avatarMap[speakerId] || '/avatar/Runze Yang-XJ109340.png'
+    const avatarPath = avatarMap[speakerId] || ''
     return resolveResourcePath(avatarPath)
   }
 
@@ -100,7 +96,7 @@ const DialogueBox: React.FC = () => {
       <div className="flex-1 z-50 relative flex flex-col  items-center px-8 py-5 mt-20">
         {/* 对话文本框 */}
         <div className=" rounded-lg p-5 mb-2.5">
-          <p className={`text-xl  ${currentSpeaker === 'narrator' ? 'italic text-gray-300' : 'text-white'}`}>{displayedText}</p>
+          <p className={`text-xl  ${currentSpeaker === 'narrator' ? 'italic text-white' : 'text-white'}`}>{displayedText}</p>
         </div>
 
         {/* 继续提示 */}

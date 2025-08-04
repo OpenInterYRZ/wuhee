@@ -2,20 +2,20 @@
   "scene": {
     "id": "chapter1_scene01",
     "title": "序章 - 人群中的觉醒",
-    "background": "/images/city_square.jpg",
+    "background": "/images/black.png",
     "music": "/assets/audio/bgm/mysterious_atmosphere.mp3"
   },
   "script": [
     {
       "type": "background",
-      "asset": "/images/city_square.jpg",
+      "asset": "/images/black.png",
       "transition": "fade"
     },
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "人群如潮水般涌动，每个人都有着自己的目的地，自己的故事。",
-      "backgroundChange": "/images/city_square.jpg"
+      "text": "……",
+      "backgroundChange": "/images/black.png"
     },
     {
       "type": "tanchuang",
@@ -26,13 +26,8 @@
       "tc": ""
     },
     {
-      "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "（站在人群中，感受着周围的喧嚣）又是这样的一天..."
-    },
-    {
       "type": "bgchange",
-      "background": "/images/ep.png",
+      "background": "/images/q1.png",
       "effects": {
         "shake": true,
         "duration": 0.5,
@@ -41,114 +36,136 @@
     },
     {
       "type": "dialogue",
-      "speaker": "protagonist",
-      "backgroundChange": "/images/fb1d8a903f0460143da2ea2b877eacc.jpg",
-      "text": "每个人都在匆忙地走着，但真的知道自己要去哪里吗？"
-    },
-    {
-      "type": "sound_effect",
-      "asset": "/assets/audio/sfx/crowd_murmur.mp3",
-      "volume": 0.3
-    },
-    {
-      "type": "character_show",
-      "character": "crowd_member_1",
-      "position": "left",
-      "transition": "slide_in"
+      "speaker": "qxn",
+      "backgroundChange": "/images/q1.png",
+      "text": "……我做了什么……"
     },
     {
       "type": "dialogue",
-      "speaker": "crowd_member_1",
-      "text": "快点快点！要迟到了！"
+      "speaker": "narrator",
+      "text": "秦小南瘫坐在地，身后风声呼啸，仿佛天地都在指责他的罪孽"
     },
     {
-      "type": "character_hide",
-      "character": "crowd_member_1",
-      "transition": "slide_out"
-    },
-    {
-      "type": "character_show",
-      "character": "crowd_member_2",
-      "position": "right",
-      "transition": "slide_in"
+      "type": "tanchuang",
+      "tc": "/images/q1.png"
     },
     {
       "type": "dialogue",
-      "speaker": "crowd_member_2",
-      "text": "今天的会议又要拖到很晚..."
+      "speaker": "qxn",
+      "text": "……完了……我杀人了……我……该死……"
     },
     {
-      "type": "character_hide",
-      "character": "crowd_member_2",
-      "transition": "slide_out"
-    },
-    {
-      "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "（看着来来往往的人群）每个人都被某种看不见的力量推动着..."
+      "type": "tanchuang",
+      "tc": "/images/y1.png"
     },
     {
       "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "就像...就像《乌合之众》书中描述的那样。"
-    },
-    {
-      "type": "character_show",
-      "character": "mysterious_figure",
-      "position": "left",
-      "transition": "fade_in"
+      "speaker": "narrator",
+      "text": "昏暗的藏身处，火光摇曳，哑巴少女缓缓走来"
     },
     {
       "type": "dialogue",
-      "speaker": "mysterious_figure",
-      "text": "有趣的观察。"
+      "speaker": "ybsn",
+      "text": "『你没有杀人。那是陶瓷人偶。』"
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
     },
     {
       "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "（转头看向声音的来源）你是...？"
+      "speaker": "qxn",
+      "text": "（猛地抬头，瞳孔收缩）……你说什么？"
     },
     {
       "type": "dialogue",
-      "speaker": "mysterious_figure",
-      "text": "一个和你有着相似想法的人。你刚才提到的那本书，很少有人会在这种场合想起它。"
+      "speaker": "ybsn",
+      "text": "『是他做的实验——“活人桩”。里面封的是残魂。』"
     },
     {
       "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "勒庞的《乌合之众》吗？确实，在这个时代，很少有人会去思考群体心理学了。"
+      "speaker": "narrator",
+      "text": "（秦小南眼神动摇，身躯颤抖，唇齿间挤出沙哑的声音）"
     },
     {
       "type": "dialogue",
-      "speaker": "mysterious_figure",
-      "text": "但你不同。你能看到别人看不到的东西，感受到别人感受不到的暗流。"
+      "speaker": "qxn",
+      "text": "这……这一切……都是试探？都是骗局？！"
     },
     {
       "type": "dialogue",
-      "speaker": "protagonist",
-      "text": "我只是...觉得有些不对劲。这些人，包括我自己，都像是被什么东西控制着。"
+      "speaker": "ybsn",
+      "text": "『他在考验你，折磨你。你只是道具。』"
     },
     {
       "type": "dialogue",
-      "speaker": "mysterious_figure",
-      "text": "那么，你想要了解真相吗？想要知道这股力量究竟是什么吗？"
+      "speaker": "narrator",
+      "text": "（一瞬的沉寂后，秦小南怒吼着掀翻桌案，火光狂舞）"
     },
     {
-      "type": "choice",
-      "options": [
-        {
-          "text": "我想知道真相",
-          "next_scene": "scene02a"
-        },
-        {
-          "text": "这太危险了，我还是算了",
-          "next_scene": "scene02b"
-        },
-        {
-          "text": "你到底是什么人？",
-          "next_scene": "scene02c"
-        }
-      ]
+      "type": "dialogue",
+      "speaker": "qxn",
+      "text": "我要杀了他！我要把他从他那该死的神像里拉出来！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『你要听我的故事吗？关于我，和他。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "（火光中的少女，眼神比火焰还要炽热，她缓缓写下）"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『我是异端，他救了我……也毁了所有人。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『他问弥陀，我还能活多久。弥陀说，五分钟都没有。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『他选择献祭全村，换我一命。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "（少女笔尖微顿，眼中流光掠影）"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『那尊佛像，从天而降。村子，被抹去了。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "qxn",
+      "text": "……你们……就是那场屠村的幸存者……"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『他向弥陀许愿，但愿望里没有“信仰”，只有“恨”。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『所以他才失败。才变成了要被弥陀“抹除”的存在。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "乌山之巅，夜色下的大佛低头，头颅处隐现一道细裂"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『裂缝开始了。弥陀要启动最终自保。计划名称——“活弥陀”。』"
     }
   ]
 }
