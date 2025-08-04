@@ -979,6 +979,50 @@ body {
   }
 }
 
+/* 屏幕抖动动画 */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* 淡出到黑色动画 */
+@keyframes fadeout {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(0);
+  }
+}
+
+.fadeout {
+  animation: fadeout 1s ease-in-out forwards;
+}
+
+@keyframes fadein {
+  0% {
+    filter: brightness(0);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.fadein {
+  animation: fadein 1s ease-in-out forwards;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .game-title {

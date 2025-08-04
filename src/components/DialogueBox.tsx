@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useGameStore } from '../store/gameStore'
+import { resolveResourcePath } from '../lib/resourceUtils'
 
 const DialogueBox: React.FC = () => {
   const { currentDialogue, currentSpeaker, isPlaying } = useGameStore()
@@ -69,7 +70,8 @@ const DialogueBox: React.FC = () => {
       crowd_member_2: '/avatar/d429e46eb951964bae7b28c4e7a9906.jpg',
     }
 
-    return avatarMap[speakerId] || '/avatar/Runze Yang-XJ109340.png'
+    const avatarPath = avatarMap[speakerId] || '/avatar/Runze Yang-XJ109340.png'
+    return resolveResourcePath(avatarPath)
   }
 
   return (

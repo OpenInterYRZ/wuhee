@@ -7,14 +7,18 @@
   "homepage": "./",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:electron && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit",
     "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
     "electron:pack": "npm run build && electron-builder",
     "electron:dist": "npm run build && electron-builder --publish=never",
-    "build:electron": "tsc -p tsconfig.node.json",
+    "electron:win": "npm run build && electron-builder --win",
+    "electron:mac": "npm run build && electron-builder --mac",
+    "electron:linux": "npm run build && electron-builder --linux",
+    "electron:all": "npm run build && electron-builder -mwl",
+    "build:electron": "tsc -p tsconfig.node.json && node -e \"require('fs').copyFileSync('electron/package.json', 'dist/electron/package.json')\"",
     "postinstall": "npm run build:electron"
   },
   "dependencies": {
@@ -55,21 +59,61 @@
     "appId": "com.wuhe.game",
     "productName": "乌合之众",
     "directories": {
-      "output": "dist"
+      "output": "release"
     },
     "files": [
       "dist/**/*",
-      "node_modules/**/*",
       "package.json"
     ],
+    "extraFiles": [
+      {
+        "from": "public",
+        "to": "public",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
     "mac": {
-      "category": "public.app-category.games"
+      "category": "public.app-category.games",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
     },
     "win": {
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "乌合之众"
     },
     "linux": {
-      "target": "AppImage"
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Game"
     }
   }
 }

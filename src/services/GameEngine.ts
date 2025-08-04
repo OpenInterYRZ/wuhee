@@ -1,6 +1,7 @@
 import { gameService, GameEvent, SceneData } from './GameService'
 import { audioService } from './AudioService'
 import { useGameStore } from '../store/gameStore'
+import { resolveResourcePath } from '../lib/resourceUtils'
 
 export interface GameEngineState {
   isInitialized: boolean
@@ -114,7 +115,7 @@ class GameEngine {
 
       // 设置场景背景
       if (sceneData.background) {
-        this.gameStore.setBackground(sceneData.background)
+        this.gameStore.setBackground(resolveResourcePath(sceneData.background))
       }
 
       // 播放场景音乐
@@ -159,8 +160,8 @@ class GameEngine {
       case 'hideCharacter':
         this.handleHideCharacter(event)
         break
-      case 'changeBackground':
-        this.handleChangeBackground(event)
+      case 'bgchange':
+        await this.handleBgChangeWithEffects(event)
         break
       case 'playMusic':
         await this.handlePlayMusic(event)
@@ -171,9 +172,18 @@ class GameEngine {
       case 'end':
         await this.handleGameEnd()
         break
+      case 'tanchuang':
+        this.handleTanChuang(event)
+        break
       default:
         console.warn(`Unknown event type: ${event.type}`)
     }
+  }
+
+  // 处理弹窗事件
+  private handleTanChuang(event: GameEvent): void {
+    console.log('🖼️ GameEngine: tanchuang', event)
+    this.gameStore.setTanChuang(resolveResourcePath(event.tc || ''))
   }
 
   // 处理对话事件
@@ -184,7 +194,7 @@ class GameEngine {
     // 如果对话事件包含背景切换，则立即切换背景（与 changeBackground 事件一致）
     if (event.backgroundChange) {
       console.log('🖼️ GameEngine: backgroundChange', event.backgroundChange)
-      this.gameStore.setBackground(event.backgroundChange)
+      this.gameStore.setBackground(resolveResourcePath(event.backgroundChange))
     }
   }
 
@@ -212,8 +222,25 @@ class GameEngine {
   // 处理背景变更事件
   private handleChangeBackground(event: GameEvent): void {
     if (event.background) {
-      this.gameStore.setBackground(event.background)
+      this.gameStore.setBackground(resolveResourcePath(event.background))
     }
+  }
+
+  // 带特效的背景切换
+  private async handleBgChangeWithEffects(event: GameEvent): Promise<void> {
+    if (event.background) {
+      this.gameStore.setBackground(resolveResourcePath(event.background))
+    }
+    if (event.effects) {
+      this.gameStore.triggerBackgroundEffects(event.effects)
+
+    } else {
+      this.gameStore.triggerBackgroundEffects({ noEffect: true })
+      if (event.background) {
+        this.gameStore.setBackground(resolveResourcePath(event.background))
+      }
+    }
+
   }
 
   // 处理音乐播放事件

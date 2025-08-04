@@ -37,6 +37,15 @@ export interface Choice {
   condition?: string
 }
 
+export interface BackgroundEffects {
+  shake?: boolean
+  fadeout?: boolean
+  fadein?: boolean
+  noEffect?: boolean
+  duration?: number
+  transition?: 'fade' | 'slide' | 'zoom'
+}
+
 export interface GameState {
   currentScene: string
   currentEventIndex: number
@@ -44,7 +53,9 @@ export interface GameState {
   currentSpeaker: string
   currentChoices: Choice[]
   background: string
+  tanChuang: string
   pendingBackgroundChange: string // 待切换的背景
+  backgroundEffects: BackgroundEffects | null // 当前背景特效
   characters: string[]
   isPlaying: boolean
   isPaused: boolean

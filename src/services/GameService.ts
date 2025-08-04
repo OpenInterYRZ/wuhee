@@ -9,13 +9,22 @@ export interface SceneData {
 }
 
 export interface GameEvent {
-  type: 'dialogue' | 'choice' | 'showCharacter' | 'hideCharacter' | 'changeBackground' | 'playMusic' | 'playSfx' | 'end'
+  type: 'dialogue' | 'choice' | 'showCharacter' | 'hideCharacter' | 'bgchange' | 'playMusic' | 'playSfx' | 'end' | 'tanchuang'
   speaker?: string
   text?: string
   character?: string
   position?: 'left' | 'center' | 'right'
   background?: string
+  tc?: string
   backgroundChange?: string // 对话事件中的背景切换
+  effects?: {
+    shake?: boolean
+    fadeout?: boolean
+    fadein?: boolean
+    noEffect?: boolean
+    duration?: number
+    transition?: 'fade' | 'slide' | 'zoom'
+  }
   music?: string
   sfx?: string
   choices?: Choice[]
@@ -56,8 +65,17 @@ class GameService {
   // 加载角色数据
   private async loadCharactersData(): Promise<void> {
     try {
-      const response = await fetch('/content/characters.json')
-      const data = await response.json()
+      // 检查是否在Electron环境中
+      let dataText: string;
+      if (window.electronAPI && 'readResourceFile' in window.electronAPI) {
+        // 在Electron环境中使用IPC读取
+        dataText = await (window.electronAPI as any).readResourceFile('content/characters.json');
+      } else {
+        // 在Web环境中使用fetch
+        const response = await fetch('/content/characters.json');
+        dataText = await response.text();
+      }
+      const data = JSON.parse(dataText);
       // 处理 {characters: {...}} 格式的数据
       if (data.characters) {
         this.charactersData = Object.keys(data.characters).reduce((acc: Record<string, CharacterData>, charId: string) => {
@@ -95,8 +113,17 @@ class GameService {
         scenePath = `/content/chapter1/${sceneId}.json`
       }
 
-      const response = await fetch(scenePath)
-      const rawData = await response.json()
+      // 检查是否在Electron环境中
+      let rawDataText: string;
+      if (window.electronAPI && 'readResourceFile' in window.electronAPI) {
+        // 在Electron环境中使用IPC读取
+        rawDataText = await (window.electronAPI as any).readResourceFile(scenePath.replace(/^\//, ''));
+      } else {
+        // 在Web环境中使用fetch
+        const response = await fetch(scenePath);
+        rawDataText = await response.text();
+      }
+      const rawData = JSON.parse(rawDataText);
 
       // 转换新格式的场景数据
       let sceneData: SceneData
@@ -156,15 +183,21 @@ class GameService {
             type: 'hideCharacter' as const,
             character: item.character,
           }
-        case 'background':
+        case 'bgchange':
           return {
-            type: 'changeBackground' as const,
-            background: item.asset,
+            type: 'bgchange' as const,
+            background: item.background,
+            effects: item.effects,
           }
         case 'sound_effect':
           return {
             type: 'playSfx' as const,
             sfx: item.asset,
+          }
+        case 'tanchuang':
+          return {
+            type: 'tanchuang' as const,
+            tc: item.tc,
           }
         default:
           // 对于不识别的类型，转换为对话事件

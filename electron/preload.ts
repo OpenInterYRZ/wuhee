@@ -16,21 +16,24 @@ const electronAPI = {
   saveGame: (gameState: GameState) => ipcRenderer.invoke('SAVE_GAME_PROGRESS', gameState),
   loadGame: () => ipcRenderer.invoke('LOAD_GAME_PROGRESS'),
   checkSaveExists: () => ipcRenderer.invoke('CHECK_SAVE_EXISTS'),
-  
+
   // 设置相关
   saveSettings: (settings: any) => ipcRenderer.invoke('SAVE_SETTINGS', settings),
   loadSettings: () => ipcRenderer.invoke('LOAD_SETTINGS'),
-  
+
   // 窗口控制
   minimizeWindow: () => ipcRenderer.invoke('MINIMIZE_WINDOW'),
   maximizeWindow: () => ipcRenderer.invoke('MAXIMIZE_WINDOW'),
   closeWindow: () => ipcRenderer.invoke('CLOSE_WINDOW'),
-  
+
+  // 资源文件读取
+  readResourceFile: (filePath: string) => ipcRenderer.invoke('READ_RESOURCE_FILE', filePath),
+
   // 事件监听
   onGameProgressLoaded: (callback: (gameState: GameState) => void) => {
     ipcRenderer.on('GAME_PROGRESS_LOADED', (_, gameState) => callback(gameState));
   },
-  
+
   removeAllListeners: (channel: string) => {
     ipcRenderer.removeAllListeners(channel);
   }

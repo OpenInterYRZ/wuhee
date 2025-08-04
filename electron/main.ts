@@ -27,7 +27,13 @@ class WindowManager {
       this.mainWindow.webContents.openDevTools();
     } else {
       // 生产环境加载打包后的文件
-      this.mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
+      if (app.isPackaged) {
+        // 打包后的路径：从 dist/electron/main.js 到 dist/index.html
+        this.mainWindow.loadFile(path.join(__dirname, '../index.html'));
+      } else {
+        // 开发构建后的路径：从 dist/electron/main.js 到项目根目录的 dist/index.html
+        this.mainWindow.loadFile(path.join(__dirname, '../index.html'));
+      }
     }
 
     this.mainWindow.once('ready-to-show', () => {

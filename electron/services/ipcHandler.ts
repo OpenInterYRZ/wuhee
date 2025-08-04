@@ -1,6 +1,8 @@
-import { ipcMain, BrowserWindow } from 'electron';
+import { ipcMain, BrowserWindow, app } from 'electron';
 import { SaveLoadService } from './saveLoadService';
 import { GameState } from '../preload';
+import * as path from 'path';
+import * as fs from 'fs';
 
 export class IPCHandler {
   private saveLoadService: SaveLoadService;
@@ -58,6 +60,11 @@ export class IPCHandler {
       return await this.saveLoadService.deleteSave();
     });
 
+    // 资源文件读取事件
+    ipcMain.handle('READ_RESOURCE_FILE', async (_, filePath: string) => {
+      return await this.readResourceFile(filePath);
+    });
+
     console.log('IPC event handlers registered successfully');
   }
 
@@ -72,5 +79,27 @@ export class IPCHandler {
   // 广播游戏进度加载完成事件
   broadcastGameProgressLoaded(gameState: GameState): void {
     this.sendToRenderer('GAME_PROGRESS_LOADED', gameState);
+  }
+
+  // 读取资源文件
+  private async readResourceFile(filePath: string): Promise<string> {
+    try {
+      let resourcePath: string;
+
+      if (app.isPackaged) {
+        // 打包后的路径：从应用根目录的 public 文件夹读取
+        resourcePath = path.join(process.resourcesPath, '..', 'public', filePath.replace(/^\//, ''));
+      } else {
+        // 开发环境：从项目的 public 文件夹读取
+        resourcePath = path.join(__dirname, '../../public', filePath.replace(/^\//, ''));
+      }
+
+      console.log('Reading resource file from:', resourcePath);
+      const content = await fs.promises.readFile(resourcePath, 'utf-8');
+      return content;
+    } catch (error) {
+      console.error(`Failed to read resource file ${filePath}:`, error);
+      throw new Error(`Failed to read resource file: ${filePath}`);
+    }
   }
 }

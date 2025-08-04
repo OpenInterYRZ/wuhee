@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import type { GameState, GameSettings, GameProgress, Choice } from '../types'
+import type { GameState, GameSettings, GameProgress, Choice, BackgroundEffects } from '../types'
 
 // 游戏动作接口
 interface GameActions {
@@ -15,11 +15,16 @@ interface GameActions {
   // 角色和背景
   setCharacters: (characters: string[]) => void
   setBackground: (background: string) => void
+  setTanChuang: (tanChuang: string) => void
   setPendingBackgroundChange: (background: string) => void
   applyPendingBackgroundChange: () => void
   setCurrentScene: (scene: string) => void
   showCharacter: (character: string, position?: string) => void
   hideCharacter: (character: string) => void
+
+  // 背景特效
+  triggerBackgroundEffects: (effects: BackgroundEffects) => void
+  clearBackgroundEffects: () => void
 
   // 游戏进度
   setGameProgress: (scene: string, eventIndex: number) => void
@@ -53,7 +58,9 @@ const defaultState: GameState = {
   currentSpeaker: '',
   characters: [],
   background: '',
+  tanChuang: '',
   pendingBackgroundChange: '', // 待切换的背景
+  backgroundEffects: null, // 当前背景特效
   currentChoices: [],
   isPlaying: false,
   isPaused: false,
@@ -112,8 +119,12 @@ export const useGameStore = create<GameState & GameActions>()(
       },
 
       setBackground: (background: string) => {
-        console.log('🖼️ GameStore: setting background to', background)
+
         set({ background })
+      },
+
+      setTanChuang: (tanChuang: string) => {
+        set({ tanChuang })
       },
 
       setPendingBackgroundChange: (background: string) => {
@@ -141,6 +152,21 @@ export const useGameStore = create<GameState & GameActions>()(
       hideCharacter: (character: string) => {
         const currentCharacters = get().characters
         set({ characters: currentCharacters.filter((c) => c !== character) })
+      },
+
+      // 背景特效
+      triggerBackgroundEffects: (effects: BackgroundEffects) => {
+        set({ backgroundEffects: effects })
+
+        if (effects.duration) {
+          setTimeout(() => {
+            set({ backgroundEffects: null })
+          }, effects.duration * 1000)
+        }
+      },
+
+      clearBackgroundEffects: () => {
+        set({ backgroundEffects: null })
       },
 
       // 游戏进度
@@ -182,6 +208,9 @@ export const useGameStore = create<GameState & GameActions>()(
               currentSpeaker: state.currentSpeaker,
               currentChoices: state.currentChoices,
               background: state.background,
+              tanChuang: state.tanChuang,
+              pendingBackgroundChange: state.pendingBackgroundChange,
+              backgroundEffects: state.backgroundEffects,
               characters: state.characters,
               isPlaying: state.isPlaying,
               isPaused: state.isPaused,

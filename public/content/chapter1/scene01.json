@@ -14,26 +14,30 @@
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "这是一个普通的午后，阳光透过云层洒在繁忙的城市广场上。",
-      "backgroundChange": "/images/5f7d4c217451909e8fe0c6c840ef8436.png",
-      "background": "/images/city_square.jpg"
-    },
-    {
-      "type": "dialogue",
-      "speaker": "narrator",
       "text": "人群如潮水般涌动，每个人都有着自己的目的地，自己的故事。",
-      "background": "/images/city_square.jpg"
+      "backgroundChange": "/images/city_square.jpg"
     },
     {
-      "type": "character_show",
-      "character": "protagonist",
-      "position": "center",
-      "transition": "fade_in"
+      "type": "tanchuang",
+      "tc": "/images/5f7d4c217451909e8fe0c6c840ef8436.png"
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
     },
     {
       "type": "dialogue",
       "speaker": "protagonist",
       "text": "（站在人群中，感受着周围的喧嚣）又是这样的一天..."
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/ep.png",
+      "effects": {
+        "shake": true,
+        "duration": 0.5,
+        "transition": "fade"
+      }
     },
     {
       "type": "dialogue",

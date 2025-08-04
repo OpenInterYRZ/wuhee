@@ -2,17 +2,45 @@ import React from 'react'
 import { useGameStore } from '../store/gameStore'
 
 const Stage: React.FC = () => {
-  const { background, characters } = useGameStore()
-  console.log('🖼️ Stage: 当前背景路径:', background)
+  const { background, backgroundEffects, tanChuang } = useGameStore()
+  console.log('🖼️ Stage: 当前背景路径:', background, 'tanChuang', tanChuang)
+
+  // 构建特效类名
+  const getEffectClasses = () => {
+    let classes = 'w-full h-full relative overflow-hidden'
+
+    if (backgroundEffects) {
+      // 抖动特效
+
+      if (backgroundEffects.noEffect) {
+        console.log('🖼️ Stage: 无特效')
+        return 'w-full h-full relative overflow-hidden'
+      }
+      if (backgroundEffects.shake) {
+        classes += ' animate-shake'
+      }
+      if (backgroundEffects.fadeout) {
+        console.log('🖼️ Stage: 淡出特效')
+        classes += ' fadeout'
+      }
+      if (backgroundEffects.fadein) {
+        console.log('🖼️ Stage: 淡入特效')
+        classes += ' fadein'
+      }
+    }
+
+    return classes
+  }
+
   return (
-    <div className="w-full h-full relative overflow-hidden">
+    <div className={getEffectClasses()}>
       {/* 背景图片 */}
       <div className="absolute inset-0 z-10 mt-40 mb-40">
         {background && (
           <img
             src={background}
             alt="Scene background"
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-opacity duration-500 `}
             onError={(e) => {
               // 如果图片加载失败，显示默认背景
               console.error('🖼️ Stage: 背景图片加载失败:', background)
@@ -24,27 +52,14 @@ const Stage: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800 -z-10" />
       </div>
 
-      {/* 角色立绘 */}
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        {characters.map((character, index) => (
-          <div
-            key={`${character}-${index}`}
-            className={`absolute bottom-0 transition-all duration-500 ${
-              index === 0 ? 'left-[10%]' : index === 1 ? 'left-1/2 -translate-x-1/2' : index === 2 ? 'right-[10%]' : 'left-[10%]'
-            }`}
-          >
-            <img
-              src={`/assets/characters/${character}.png`}
-              alt={character}
-              className="h-[80vh] w-auto object-contain"
-              onError={(e) => {
-                // 如果角色图片加载失败，隐藏该角色
-                e.currentTarget.style.display = 'none'
-              }}
-            />
+      {/* 弹窗 */}
+      {tanChuang && (
+        <div className="absolute bg-black/80 inset-0 z-40 flex justify-center items-center">
+          <div className="w-1/2 h-1/2 border-white border-4 ">
+            <img src={tanChuang} alt="Tan Chuang" className="w-full h-full object-cover" />
           </div>
-        ))}
-      </div>
+        </div>
+      )}
 
       {/* 舞台特效层 */}
       <div className="absolute inset-0 z-30 pointer-events-none">{/* 这里可以添加各种视觉特效 */}</div>
