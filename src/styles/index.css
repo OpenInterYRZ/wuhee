@@ -1023,6 +1023,36 @@ body {
   animation: fadein 1s ease-in-out forwards;
 }
 
+/* 弹窗淡入动画 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* 弹窗内容缩放动画 */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.7s ease-out forwards;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .game-title {

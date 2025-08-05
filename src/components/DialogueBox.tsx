@@ -71,13 +71,13 @@ const DialogueBox: React.FC = () => {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 w-full h-48 z-40 flex items-stretch p-0 mb-20" onClick={handleDialogueClick}>
+    <div className=" fixed bottom-0 left-0 w-full h-48 z-40 flex items-stretch p-0 mb-20" onClick={handleDialogueClick}>
       {/* 对话框背景 */}
       <div className="absolute inset-0 bg-none" />
 
       {/* 左侧角色信息区域 */}
       {currentSpeaker !== 'narrator' && (
-        <div className="w-168 flex flex-row items-center justify-center gap-7 z-50 p-5 ">
+        <div className="absolute w-168 flex flex-row items-center justify-center gap-7 z-50 p-5 ">
           <div className="w-40 h-40 mb-2.5 border-2 border-white/40 rounded-lg overflow-hidden">
             <img src={getAvatarPath(currentSpeaker)} alt={characterInfo.name} className="w-full h-full object-cover" />
           </div>
@@ -93,10 +93,10 @@ const DialogueBox: React.FC = () => {
       )}
 
       {/* 右侧对话内容区域 */}
-      <div className="flex-1 z-50 relative flex flex-col  items-center px-8 py-5 mt-20">
+      <div className="flex-1 z-50 relative flex flex-col  items-center px-8 py-8 mt-20">
         {/* 对话文本框 */}
-        <div className=" rounded-lg p-5 mb-2.5">
-          <p className={`text-xl  ${currentSpeaker === 'narrator' ? 'italic text-white' : 'text-white'}`}>{displayedText}</p>
+        <div className="absolute left-1/2 -translate-x-1/2 rounded-lg p-5 mb-2.5">
+          <p className={` text-start text-2xl  ${currentSpeaker === 'narrator' ? 'italic text-white' : 'text-white'}`}>{displayedText}</p>
         </div>
 
         {/* 继续提示 */}
@@ -106,19 +106,6 @@ const DialogueBox: React.FC = () => {
           </div>
         )}
       </div>
-
-      {/* 快进按钮 */}
-      {isTyping && (
-        <button
-          className="absolute top-2.5 right-5 px-2.5 py-1 text-xs bg-white/20 border-0 rounded text-white cursor-pointer transition-all duration-300 hover:bg-white/30"
-          onClick={() => {
-            setDisplayedText(currentDialogue)
-            setIsTyping(false)
-          }}
-        >
-          跳过
-        </button>
-      )}
     </div>
   )
 }

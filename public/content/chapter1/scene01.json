@@ -2,8 +2,7 @@
   "scene": {
     "id": "chapter1_scene01",
     "title": "序章 - 人群中的觉醒",
-    "background": "/images/black.png",
-    "music": "/assets/audio/bgm/mysterious_atmosphere.mp3"
+    "background": "/images/black.png"
   },
   "script": [
     {
@@ -18,14 +17,6 @@
       "backgroundChange": "/images/black.png"
     },
     {
-      "type": "tanchuang",
-      "tc": "/images/5f7d4c217451909e8fe0c6c840ef8436.png"
-    },
-    {
-      "type": "tanchuang",
-      "tc": ""
-    },
-    {
       "type": "bgchange",
       "background": "/images/q1.png",
       "effects": {
@@ -37,7 +28,6 @@
     {
       "type": "dialogue",
       "speaker": "qxn",
-      "backgroundChange": "/images/q1.png",
       "text": "……我做了什么……"
     },
     {
@@ -47,7 +37,7 @@
     },
     {
       "type": "tanchuang",
-      "tc": "/images/q1.png"
+      "tc": "/images/jiuku.png"
     },
     {
       "type": "dialogue",
@@ -78,14 +68,40 @@
       "text": "（猛地抬头，瞳孔收缩）……你说什么？"
     },
     {
+      "type": "tanchuang",
+      "tc": "/images/ch.png"
+    },
+    {
       "type": "dialogue",
       "speaker": "ybsn",
       "text": "『是他做的实验——“活人桩”。里面封的是残魂。』"
     },
     {
       "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『他认为这样可以规避死亡预告。』"
+    },
+    {
+      "type": "dialogue",
       "speaker": "narrator",
-      "text": "秦小南眼神动摇，身躯颤抖，唇齿间挤出沙哑的声音"
+      "text": "秦小南眼神动摇，身躯颤抖"
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
+    },
+    {
+      "type": "bgchange",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/q2.png",
+      "effects": {
+        "fadein": true
+      }
     },
     {
       "type": "dialogue",
@@ -103,9 +119,21 @@
       "text": "一瞬的沉寂后，秦小南怒吼着站起，眼神里满是怒火"
     },
     {
+      "type": "bgchange",
+      "background": "/images/lcbs.png",
+      "effects": {
+        "shake": true,
+        "duration": 0.5
+      }
+    },
+    {
       "type": "dialogue",
       "speaker": "qxn",
       "text": "我要杀了他！我要把他和他的那些跟班都杀掉！"
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/y1.png"
     },
     {
       "type": "dialogue",
@@ -115,12 +143,34 @@
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "（火光中的少女，眼神比火焰还要炽热，她缓缓写下）"
+      "text": "少女眼神比火焰还要炽热，她缓缓写下..."
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/black.png",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
     },
     {
       "type": "dialogue",
       "speaker": "ybsn",
       "text": "『我曾经是异端，他救了我……也毁了所有人。』"
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/cz.png",
+      "effects": {
+        "fadein": true
+      }
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/yb2.png"
     },
     {
       "type": "dialogue",
@@ -138,9 +188,69 @@
       "text": "弥陀想要了解人间，少女想要了解弥陀。"
     },
     {
+      "type": "tanchuang",
+      "tc": "/images/yd2.png"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "村里的人发现后，大骂女孩是异端。"
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/black.png",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/ss2.png",
+      "effects": {
+        "fadein": true
+      }
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "他们拿着火把要把女孩烧死。"
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/ss2.png",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/lcb.png",
+      "effects": {
+        "fadein": true
+      }
+    },
+    {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『他问弥陀，我的寿命能超过5分钟吗？弥陀说，否。』"
+      "text": "『他问弥陀：我的寿命能超过5分钟吗？』"
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/lcb.png",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/fou.png",
+      "effects": {
+        "fadein": true
+      }
     },
     {
       "type": "dialogue",
@@ -148,14 +258,39 @@
       "text": "『弥陀说，否。』"
     },
     {
+      "type": "bgchange",
+      "effects": {
+        "fadeout": true
+      }
+    },
+    {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『他选择献祭全村，换我一命。』"
+      "text": "『于是，他选择献祭全村，换我一命。』"
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/black.png",
+      "effects": {
+        "fadeout": true
+      }
     },
     {
       "type": "dialogue",
       "speaker": "narrator",
-      "text": "（少女笔尖微顿，眼中流光掠影）"
+      "text": "……"
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/1s.jpg"
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/2s.jpg"
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/3s.jpg"
     },
     {
       "type": "dialogue",
@@ -165,7 +300,18 @@
     {
       "type": "dialogue",
       "speaker": "qxn",
-      "text": "……你们……就是那场屠村的幸存者……"
+      "text": "这就是那场连环杀人案？你们……"
+    },
+    {
+      "type": "tanchuang",
+      "tc": ""
+    },
+    {
+      "type": "bgchange",
+      "background": "/images/ds.png",
+      "effects": {
+        "fadein": true
+      }
     },
     {
       "type": "dialogue",
@@ -175,7 +321,13 @@
     {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『所以他才失败。才变成了要被弥陀“抹除”的存在。』"
+      "text": "『所以他才有瑕疵。才变成了要被弥陀“抹除”的存在。』"
+    },
+    {
+      "type": "bgchange",
+      "effects": {
+        "fadeout": true
+      }
     },
     {
       "type": "dialogue",
@@ -183,9 +335,30 @@
       "text": "乌山之巅，夜色下的大佛低头，头颅处隐现一道细裂"
     },
     {
+      "type": "bgchange",
+      "background": "/images/lh.png",
+      "effects": {
+        "fadein": true
+      }
+    },
+    {
       "type": "dialogue",
       "speaker": "ybsn",
-      "text": "『裂缝开始了。弥陀要启动最终自保。计划名称——“活弥陀”。』"
+      "text": "『裂缝开始了。弥陀要寻求自保。时间不多了。』"
+    },
+    {
+      "type": "tanchuang",
+      "tc": "/images/y5.png"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "ybsn",
+      "text": "『你，要阻止他。』"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "narrator",
+      "text": "本章结束，谢谢游玩"
     }
   ]
 }

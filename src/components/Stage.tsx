@@ -54,8 +54,8 @@ const Stage: React.FC = () => {
 
       {/* 弹窗 */}
       {tanChuang && (
-        <div className="absolute bg-black/80 inset-0 z-40 flex justify-center items-center">
-          <div className=" h-1/2 border-white border-4 ">
+        <div className="absolute bg-black/80 inset-0 z-40 flex justify-center items-center animate-fadeIn">
+          <div className="h-1/2 border-white border-4 animate-scaleIn">
             <img src={tanChuang} alt="Tan Chuang" className="w-full h-full object-cover" />
           </div>
         </div>
