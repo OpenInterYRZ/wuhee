@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useGameStore } from '../store/gameStore'
 import { useGameEngine } from '../hooks/useGameEngine'
 import { ipcClient } from '../services/IPCClient'
+import { resolveResourcePath } from '../lib/resourceUtils'
 
 const MainMenu: React.FC = () => {
   const navigate = useNavigate()
@@ -89,7 +90,7 @@ const MainMenu: React.FC = () => {
       <div className="text-center z-10">
         {/* 游戏标题 */}
         <div className="mb-10">
-          <img src="/images/title.png" alt="title" className="w-1/2 mx-auto" />
+          <img src={resolveResourcePath('/images/title.png')} alt="title" className="w-1/2 mx-auto" />
         </div>
 
         {/* 菜单按钮 */}
