@@ -62,26 +62,26 @@ const PauseMenu: React.FC<PauseMenuProps> = ({ onResume }) => {
             继续游戏
           </button>
 
-          <button
+          {/* <button
             className="px-6 py-3 border-0 rounded-lg text-base cursor-pointer transition-all duration-300 bg-white/10 text-white border border-white/30 hover:bg-white/20 hover:-translate-y-0.5"
             onClick={handleSave}
           >
             保存游戏
-          </button>
+          </button> */}
 
-          <button
+          {/* <button
             className="px-6 py-3 border-0 rounded-lg text-base cursor-pointer transition-all duration-300 bg-white/10 text-white border border-white/30 hover:bg-white/20 hover:-translate-y-0.5"
             onClick={handleLoad}
           >
             读取存档
-          </button>
+          </button> */}
 
-          <button
+          {/* <button
             className="px-6 py-3 border-0 rounded-lg text-base cursor-pointer transition-all duration-300 bg-white/10 text-white border border-white/30 hover:bg-white/20 hover:-translate-y-0.5"
             onClick={handleSettings}
           >
             游戏设置
-          </button>
+          </button> */}
 
           <button
             className="px-6 py-3 border-0 rounded-lg text-base cursor-pointer transition-all duration-300 bg-white/5 text-white border border-white/30 hover:bg-white/20 hover:-translate-y-0.5"

@@ -272,7 +272,7 @@
       "type": "bgchange",
       "background": "/images/black.png",
       "effects": {
-        "fadeout": true
+        "fadein": true
       }
     },
     {
